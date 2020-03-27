@@ -14,7 +14,11 @@ namespace BLL
         public void RegistarLiquidacion(LiquidacionCuotaModeradora liquidacion)
         {
             repository = new LiquidacionCuotaModeradoraRepository();
-            repository.RegistrarLiquidacion(liquidacion);
+            repository.Registrar(liquidacion);
+        }
+        public List<LiquidacionCuotaModeradora> ConsultarLiquidacion()
+        {
+            return repository.Consultar();
         }
     }
 }
