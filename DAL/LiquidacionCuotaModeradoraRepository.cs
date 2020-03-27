@@ -14,6 +14,7 @@ namespace DAL
 
         public void RegistrarLiquidacion(LiquidacionCuotaModeradora liquidacion)
         {
+
             FileStream file = new FileStream(nameFile, FileMode.Append);
             StreamWriter writer = new StreamWriter(file);
             writer.WriteLine($"{liquidacion.NumeroLiquidacion};{liquidacion.IdPaciente};{liquidacion.TipoAfiliacion};" +
