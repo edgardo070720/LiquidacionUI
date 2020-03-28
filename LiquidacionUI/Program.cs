@@ -12,6 +12,8 @@ namespace LiquidacionUI
     {
         static void Main(string[] args)
         {
+            LiquidacionCuotaModeradoraService service = new LiquidacionCuotaModeradoraService();
+
             
 
 

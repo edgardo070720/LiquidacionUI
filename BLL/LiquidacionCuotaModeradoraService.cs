@@ -8,17 +8,16 @@ using DAL;
 
 namespace BLL
 {
+    
     public class LiquidacionCuotaModeradoraService
     {
+        private List<RegimenContributivo> liquidaciones;
         LiquidacionCuotaModeradoraRepository repository;
         public void RegistarLiquidacion(LiquidacionCuotaModeradora liquidacion)
         {
             repository = new LiquidacionCuotaModeradoraRepository();
             repository.Registrar(liquidacion);
         }
-        public List<LiquidacionCuotaModeradora> ConsultarLiquidacion()
-        {
-            return repository.Consultar();
-        }
+        
     }
 }
