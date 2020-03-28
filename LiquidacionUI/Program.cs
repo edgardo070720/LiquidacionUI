@@ -14,7 +14,9 @@ namespace LiquidacionUI
         {
             LiquidacionCuotaModeradoraService service = new LiquidacionCuotaModeradoraService();
 
-            
+            int numeroLiquidacion = Convert.ToInt32(Console.ReadLine());
+            double valorServicio = Convert.ToDouble(Console.ReadLine());
+            service.ActualizarLiquidacion(numeroLiquidacion, valorServicio);
 
 
             Console.ReadKey();
