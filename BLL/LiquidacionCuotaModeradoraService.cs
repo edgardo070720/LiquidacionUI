@@ -11,7 +11,7 @@ namespace BLL
     
     public class LiquidacionCuotaModeradoraService
     {
-        
+        List<LiquidacionCuotaModeradora> liquidaciones;
         LiquidacionCuotaModeradoraRepository repository = new LiquidacionCuotaModeradoraRepository();
         public void RegistarLiquidacion(LiquidacionCuotaModeradora liquidacion)
         {
@@ -25,7 +25,7 @@ namespace BLL
         }
         public void EliminarLiquidacion(int numeroLiquidacion)
         {
-            List<LiquidacionCuotaModeradora> liquidaciones = new List<LiquidacionCuotaModeradora>();
+             liquidaciones = new List<LiquidacionCuotaModeradora>();
             liquidaciones = repository.Consultar();
 
             foreach (LiquidacionCuotaModeradora liquidacion in liquidaciones)
