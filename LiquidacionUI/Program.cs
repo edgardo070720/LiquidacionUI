@@ -20,22 +20,26 @@ namespace LiquidacionUI
                 {
                     case 1: service.RegistarLiquidacion(RecibirDatos()); break;
                     case 2:
-                        Console.WriteLine("------------CONSULTAR---------------------");
+                        Console.WriteLine("------------CONSULTAR------------------------");
                         Console.WriteLine("NUMERO LIQUIDACION-ID PACIENTE-TIPO DE AFILIACION-SALARIO DEVENGADO-" +
                         "VALOR DEL SERVICIO-TARIFA APLICADA-VALOR DE LIQUIDACION REAL-TOPE MAXIMO-CUOTA MODERADORA");
                         foreach (LiquidacionCuotaModeradora liquidacion in service.ConsultarLiquidacion()) 
                         {
                             Console.WriteLine($"{liquidacion.NumeroLiquidacion}--{liquidacion.IdPaciente}--{liquidacion.TipoAfiliacion}--" +
-                                $"{liquidacion.SalarioDevengado}--{liquidacion.ValorSericio}--{liquidacion.TipoAfiliacion}--{liquidacion.ValorLiquidadoReal}--" +
+                                $"{liquidacion.SalarioDevengado}--{liquidacion.ValorSericio}--{liquidacion.TarifaAplicada}--{liquidacion.ValorLiquidadoReal}--" +
                                 $"{liquidacion.TopeMaximo}--{liquidacion.CuotaModeradora}");
                         }  ; Console.ReadKey(); break;
-                    case 3: Console.WriteLine("-------------ELIMINAR--------------");
+                    case 3: Console.WriteLine("-------------ELIMINAR-----------------------");
                         Console.WriteLine("NUMERO DE LIQUIDACION: "); int numeroLiquidacion = Convert.ToInt32(Console.ReadLine());
                         service.EliminarLiquidacion(numeroLiquidacion);break;
                     case 4: Console.WriteLine("---------MODIFICAR VALOR DE SERVICIO---------");
                         Console.WriteLine("NUMERO DE LIQUIDACION: "); int numeroLiquidacion1 = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("VALOR DEL SERVICIO: "); int valorServicio = Convert.ToInt32(Console.ReadLine());
-                        service.ActualizarLiquidacion(numeroLiquidacion1, valorServicio);break;
+                        if (service.Validar(numeroLiquidacion1)!=0)
+                        {
+                            Console.WriteLine("VALOR DEL SERVICIO: "); int valorServicio = Convert.ToInt32(Console.ReadLine());
+                            service.ActualizarLiquidacion(numeroLiquidacion1, valorServicio);
+                        }
+                        break;
                     case 5: controlador = 1;break;
                     default:Console.WriteLine("ERROR AL DIGITAR LA OPCION");break;
 
@@ -46,7 +50,7 @@ namespace LiquidacionUI
         public static int MostrarMenu()
         {
             int opcion;
-            Console.WriteLine("---------------menu------------");
+            Console.WriteLine("---------------menu-------------------------");
             Console.WriteLine("1. REGISTRAR LIQUIDACION");
             Console.WriteLine("2. CONSULTAR LISTA DE LIQUIDACION");
             Console.WriteLine("3. ELIMINAR LIQUIDACION");
@@ -59,7 +63,7 @@ namespace LiquidacionUI
         public static LiquidacionCuotaModeradora RecibirDatos()
         {
             LiquidacionCuotaModeradora liquidacion = new LiquidacionCuotaModeradora();
-            Console.WriteLine("----------REGISTRAR-----------");
+            Console.WriteLine("----------REGISTRAR-------------------------");
             Console.WriteLine("NUMERO DE LIQUIDACION: ");
             liquidacion.NumeroLiquidacion = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("IDENTIFICACION DEL PACIENTE: ");
